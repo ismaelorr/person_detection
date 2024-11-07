@@ -8,7 +8,7 @@ from deepface import DeepFace
 class VideoWindow(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Estimación de Edad, Género y Detección de Manos")
+        self.setWindowTitle("Person detection")
         self.video_label = QtWidgets.QLabel(self)
         layout = QtWidgets.QVBoxLayout()
         layout.addWidget(self.video_label)
@@ -55,7 +55,7 @@ class VideoWindow(QtWidgets.QWidget):
                 fingers_up = self.count_fingers(hand_landmarks)
 
                 # Show number of fingers in each hands
-                cv2.putText(frame, f"Mano {hand_index + 1}: {fingers_up} dedos levantados",
+                cv2.putText(frame, f"Hand {hand_index + 1}: {fingers_up} fingers up",
                             (10, 70 + hand_index * 30), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2)
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         height, width, channel = frame.shape
